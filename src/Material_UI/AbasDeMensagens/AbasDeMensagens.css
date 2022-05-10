@@ -1,0 +1,28 @@
+
+.listaDeMensagensRight{
+   display: flex;
+   justify-content: flex-end;
+   width: 100%;
+}
+.listaDeMensagemLeft{
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+}
+.item{
+    display: flex;
+    width: 48%;
+    align-items: flex-end;
+}
+.mensagemBodyEmissor{
+    color: white;
+    background-color: #8ff87d;
+    padding: 10px 15px;
+    border-radius: 10px;
+}
+.mensagemBodyReceptor{
+    color: white;
+    background-color: #11a8ff;
+    padding: 10px 15px;
+    border-radius: 10px;
+}

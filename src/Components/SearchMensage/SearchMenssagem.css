@@ -1,0 +1,10 @@
+.SearchMenssagem{
+    position: fixed;
+    bottom: 20px;
+    left: 43%;
+    right: 2%;
+    border-radius: 25px;
+    background-color: rgb(221, 221, 255);
+    border: none;
+    height: 50px;
+}

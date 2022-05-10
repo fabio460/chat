@@ -1,0 +1,11 @@
+.itemList{
+    background-color: white;
+    margin: 20px 0px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.FolderListItemTittle{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

@@ -10,18 +10,18 @@ import "./FolderList.css"
 import { useSelector } from 'react-redux';
 import  AvatarGroup  from '../GroupAvatars';
 import corAleatoria, {} from '../../funcoesUteis'
-import Stack from '@mui/material/Stack';
+
 export default function FolderList() {
   const usuarios = useSelector(state=>state.usuario).array
   const mensagemRecebida = useSelector(state=>state.mensagem).mensagem
   var ultimaMensagem = mensagemRecebida[mensagemRecebida.length - 1]
 
-  const shapeStyles = { bgcolor: corAleatoria(), width: 40, height: 40 };
+  // const shapeStyles = { bgcolor: corAleatoria(), width: 40, height: 40 };
   const shapeCircleStyles = { borderRadius: '50%' };
   
-  const circle = (
-    <Avatar component="span" sx={{ ...shapeStyles, ...shapeCircleStyles }} alt='fabio' src="/static/images/avatar/5.jpg"/>
-  );
+  // const circle = (
+  //   <Avatar component="span" sx={{ ...shapeStyles, ...shapeCircleStyles }} alt='fabio' src="/static/images/avatar/5.jpg"/>
+  // );
   return (
     <List sx={{ width: '93%', bgcolor: 'light', margin:"auto" }}>
       <AvatarGroup/>

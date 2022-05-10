@@ -4,12 +4,12 @@ import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
-import ImageIcon from '@mui/icons-material/Image';
-import WorkIcon from '@mui/icons-material/Work';
-import BeachAccessIcon from '@mui/icons-material/BeachAccess';
+
 import './AbasDeMensagens.css'
 import corAleatoria from '../../funcoesUteis';
+
 export default function AbasDeMensagens() {
+
   return (
     <List className='' >
       <ListItem >
@@ -37,7 +37,10 @@ export default function AbasDeMensagens() {
                 </ListItemAvatar>
                 <ListItemText primary={<div className='mensagemBodyReceptor'>
                    Ola Fabio, tudo bem, eu irei a escola na parte da manhâ
+                   
+                   
                 </div>} secondary="Jan 7, 12:29" />
+                
             </div>
         </div>
       </ListItem>
@@ -46,6 +49,9 @@ export default function AbasDeMensagens() {
             <div className='item'>
                 <ListItemText primary={<div className='mensagemBodyEmissor'>
                    Ok vou esperar vc chegar, vai com Deus
+                   
+
+                   
                 </div>} secondary="Jan 7, 12:30" />
                 <ListItemAvatar>
                     <Avatar alt={"Fabio"} src="/static/images/avatar/5.jpg" component="span" 

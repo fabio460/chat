@@ -18,8 +18,8 @@ const initialState = {
         receptorDaMensagem:"Ana"   
     },
     {
-        nome:"Anailza",
-        email: "Anailza@gmail.com",
+        nome:"Ana",
+        email: "Ana@gmail.com",
         avatar:avatar,
         role:"ola meu nome é Ana",
         quantidadeDeMensagem:1,

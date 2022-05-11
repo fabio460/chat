@@ -11,7 +11,7 @@
 }
 .item{
     display: flex;
-    width: 48%;
+    width: 58%;
     align-items: flex-end;
 }
 .mensagemBodyEmissor{
@@ -19,10 +19,15 @@
     background-color: #8ff87d;
     padding: 10px 15px;
     border-radius: 10px;
+    
 }
 .mensagemBodyReceptor{
     color: white;
     background-color: #11a8ff;
     padding: 10px 15px;
     border-radius: 10px;
+}
+.listAbasDeMensagem{
+    padding-bottom: 250px;
+    height: 100%;
 }

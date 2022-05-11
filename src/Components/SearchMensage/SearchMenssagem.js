@@ -9,6 +9,8 @@ import AttachFileRoundedIcon from '@mui/icons-material/AttachFileRounded';
 import Emoji from './Emoji';
 import EmojiEmotionsOutlined from '@mui/icons-material/EmojiEmotionsOutlined';
 import './SearchMenssagem.css'
+import { useDispatch, useSelector } from 'react-redux';
+
 export default function SearchMenssagem() {
   const [emojiVisible,setEmojiVisible] = React.useState(false)
   const [emoji,setEmoji] = React.useState(null)
@@ -27,6 +29,19 @@ export default function SearchMenssagem() {
   if(emoji){
     console.log(emoji)
    // setMensagem(mensagem + emoji)
+  }
+  const dispath = useDispatch()
+  const mensagemReducer = useSelector(state=>state.mensagem.mensagem)
+  const enviarMensagem = ()=>{
+    let dados = {mensagem,usuario:"Fabio",horaDaMensagem:"13:50"}
+    let aux = []
+    aux = [...mensagemReducer,dados]
+    console.log(aux)
+    dispath({
+      type:"mensagem",
+      payload:{mensagem:aux}
+    })
+    setMensagem('')
   }
   return (
     <div className='SearchMenssagem'>
@@ -49,7 +64,7 @@ export default function SearchMenssagem() {
         <div onClick={mostrarEmoji} style={{cursor:"pointer"}}><EmojiEmotionsOutlined/></div>
       </IconButton>
       <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
-      <IconButton color="primary" sx={{ p: '10px' }} aria-label="directions">
+      <IconButton color="primary" sx={{ p: '10px' }} aria-label="directions" onClick={enviarMensagem}>
         <NearMeOutlinedIcon />
       </IconButton>
     </div>

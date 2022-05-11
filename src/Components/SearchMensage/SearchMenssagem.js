@@ -23,11 +23,10 @@ export default function SearchMenssagem() {
     
     if(figura){
       setEmoji(figura.emoji)
-    
     }
   }
   if(emoji){
-    console.log(emoji)
+    // console.log(emoji)
    // setMensagem(mensagem + emoji)
   }
   const dispath = useDispatch()

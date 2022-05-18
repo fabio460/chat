@@ -2,32 +2,40 @@ const initialState = {
     mensagem:[
         {
             id:1,
-            usuario:"Fabio",
-            receptorDaMensagem:"Ruth",
+            usuario:"Ruth",
+            receptorDaMensagem:"Fabio",
             mensagem:"ola ruth tudo bem ?",
             horaDaMensagem:"14:30"
         },
         {
             id:2,
-            usuario:"Ruth",
-            receptorDaMensagem:"fabio",
+            usuario:"Fabio",
+            receptorDaMensagem:"Ruth",
             mensagem:"Oi Fabio tudo bem, e vc ?",
             horaDaMensagem:"12:30"
         },
         {
             id:1,
-            usuario:"Fabio",
-            receptorDaMensagem:"ruth",
+            usuario:"Ruth",
+            receptorDaMensagem:"Favio",
             mensagem:"So queria saber como vc estava, boa noite",
             horaDaMensagem:"14:30"
         },
         {
             id:1,
-            usuario:"Fabio",
-            receptorDaMensagem:"ruth",
+            usuario:"Ruth",
+            receptorDaMensagem:"Fabio",
             mensagem:"Amanha agente se fala",
             horaDaMensagem:"14:45"
         },
+        {
+            id:2,
+            usuario:"Fabio",
+            receptorDaMensagem:"Ruth",
+            mensagem:"Amanha agente se fala",
+            horaDaMensagem:"14:45"
+        },
+        
      
     ]
 }

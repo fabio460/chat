@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
@@ -6,23 +6,37 @@ import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
 import {useSelector} from 'react-redux'
 import './AbasDeMensagens.css'
-import corAleatoria from '../../funcoesUteis';
+import corAleatoria, { horaTratada } from '../../funcoesUteis';
+import PopoverMensagensLeft from '../popoverMensagensLeft';
+import PopoverMensagensRight from '../popoverMensagensRight';
 
 export default function AbasDeMensagens() {
-  const mensagem = useSelector(state=>state.mensagem).mensagem
-  console.log(mensagem)
+  // const mensagem = useSelector(state=>state.mensagem).mensagem
+  // console.log(mensagem)
+
+  let mensagensReducerDados = useSelector(state=>state.mensagensApi.mensagens)
+  let idDoUsuarioLogado = localStorage.getItem('idDoUsuarioLogado')
+  let emissor = mensagensReducerDados.emissor || " "
+  emissor = emissor[0].nome
+  let receptor = mensagensReducerDados.receptor || " "
+  receptor = receptor[0].nome
+  
+  let mensagensReducer = mensagensReducerDados.mensagens || []
+    
   return (
     <div>
+     
     <List className='listAbasDeMensagem' >
-      {mensagem.map((item)=>{
-        const tipo = item.id
+      {mensagensReducer.map((item)=>{
+
+        const tipo = parseInt(item.receptor)
         let classe = 'listaDeMensagemLeft'
         let cor = "mensagemBodyEmissor"
         let display1 = "flex"
         let display2 = "none"
         let margin1 = "0px 0px 0px 14px"
         let margin2 = "0px 14px 0px 14px"
-        if(tipo === 1){
+        if(tipo === parseInt(idDoUsuarioLogado)){
            classe = "listaDeMensagensRight"
            cor = "mensagemBodyReceptor"
            margin1 = "0px 14px 0px 14px"
@@ -30,66 +44,58 @@ export default function AbasDeMensagens() {
            display1 = "none"
            display2 = "flex"
         }
-        return(
-          <ListItem >
-          <div className={classe}>
-              <div className='item'>
-                  <ListItemAvatar>
-                      <Avatar alt={item.usuario} src="/static/images/avatar/5.jpg" component="span" 
-                            style={{background:corAleatoria(), margin:`${margin2}`, display:`${display1}`}}
-                      />
-                  </ListItemAvatar>
-                  <ListItemText 
-                       primary={<div className={cor}>{item.mensagem}</div>}
-                       secondary={item.horaDaMensagem} />
-                  <ListItemAvatar>
-                      <Avatar alt={item.usuario} src="/static/images/avatar/5.jpg" component="span" 
-                            sx={{background:corAleatoria(), margin:`${margin1}`, display:`${display2}`}}
-                      />
-                  </ListItemAvatar>
-              </div>
-          </div>
-          
-        </ListItem>
-        )
-      })}
-      {/* <ListItem >
-        <div className='listaDeMensagemLeft'>
-            <div className='item'>
  
-                <ListItemAvatar>
-                    <Avatar alt={"Rhuth"} src="/static/images/avatar/5.jpg" component="span" 
-                          sx={{background:corAleatoria(), margin:'0px 14px 0px 14px'}}
-                    />
-                </ListItemAvatar>
-                <ListItemText primary={<div className='mensagemBodyReceptor'>
-                   Ola Fabio, tudo bem, eu irei a escola na parte da manhâ
-                   
-                   
-                </div>} secondary="Jan 7, 12:29" />
-                
-            </div>
-        </div>
-      </ListItem> */}
-      {/* <ListItem >
-        <div className='listaDeMensagensRight'>
-            <div className='item'>
-                <ListItemText primary={<div className='mensagemBodyEmissor'>
-                   Ok vou esperar vc chegar, vai com Deus
-                   
 
-                   
-                </div>} secondary="Jan 7, 12:30" />
-                <ListItemAvatar>
-                    <Avatar alt={"Fabio"} src="/static/images/avatar/5.jpg" component="span" 
-                          sx={{background:corAleatoria(), margin:'0px 0px 0px 14px'}}
-                    />
-                </ListItemAvatar>
+          return(
+            <ListItem >
+            <div className={classe}>
+                <div className='item'>
+                    <ListItemAvatar>
+                        <Avatar alt={emissor.toUpperCase()} src="/static/images/avatar/5.jpg" component="span" 
+                              style={{background:corAleatoria(), margin:`${margin2}`, display:`${display1}`}}
+                        />
+                        
+                    </ListItemAvatar>
+                
+                    {tipo === parseInt(idDoUsuarioLogado) ? 
+                            <div style={{display:"flex",alignItems:"center",width:"100%"}}>
+                                <div style={{background:"",display:"flex",alignItems:"center",height:'60px',marginBottom:'20px'}}>
+                                  <PopoverMensagensRight idDaMensagem={item.id} />
+                                </div>
+                                  <ListItemText 
+                                      primary={<div className={cor}>{item.body}</div>}
+                                      secondary={horaTratada(item.createdAt)} 
+                                      
+                                  />
+                            </div>  
+                      : 
+                            <div style={{display:"flex",alignItems:"center",width:"100%"}}>
+                                <ListItemText 
+                                    primary={<div className={cor}>{item.body}</div>}
+                                    secondary={horaTratada(item.createdAt)} 
+                                />
+                                <div style={{background:"",display:"flex",alignItems:"center",height:'60px',marginBottom:'20px'}}>
+                                  <PopoverMensagensLeft idDaMensagem={item.id} />
+                                </div>
+                            </div>  
+                        }
+                    <ListItemAvatar>
+                        <Avatar alt={receptor.toUpperCase()} src="/static/images/avatar/5.jpg" component="span" 
+                              sx={{background:corAleatoria(), margin:`${margin1}`, display:`${display2}`}}
+                        />
+                        
+                    </ListItemAvatar>
+                </div>
             </div>
-        </div>
-      </ListItem> */}
+            
+          </ListItem>
+          )
+      
+      }
+      
+      )}
+     
     </List>
-    <div style={{margin:"200px "}}></div>
     </div>
   );
 }

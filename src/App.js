@@ -5,7 +5,6 @@ import Coluna3 from './Components/Coluna_3';
 import Coluna2 from './Components/Coluna_2';
 import Coluna1 from './Components/Coluna_1';
 function App() {
-  
   return (
     <BrowserRouter>    
         <div className="App">

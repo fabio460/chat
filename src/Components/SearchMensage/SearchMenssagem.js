@@ -1,73 +1,61 @@
-import * as React from 'react';
-// import EmojiEmotionsOutlinedIcon from '@mui/icons-material/EmojiEmotionsOutlined';
+import React,{useEffect} from 'react';
 import InputBase from '@mui/material/InputBase';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import NearMeOutlinedIcon from '@mui/icons-material/NearMeOutlined';
-// import DirectionsIcon from '@mui/icons-material/Directions';
 import AttachFileRoundedIcon from '@mui/icons-material/AttachFileRounded';
-import Emoji from './Emoji';
-import EmojiEmotionsOutlined from '@mui/icons-material/EmojiEmotionsOutlined';
 import './SearchMenssagem.css'
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
+import Api from '../../Api';
+import BasicPopover from '../../Material_UI/BasicPopover';
 
 export default function SearchMenssagem() {
-  const [emojiVisible,setEmojiVisible] = React.useState(false)
-  const [emoji,setEmoji] = React.useState(null)
-  const [mensagem,setMensagem] = React.useState()
-  
-  const mostrarEmoji = ()=>{
-    setEmojiVisible(!emojiVisible)
-  }
-  const GetEmoji = (figura)=>{
-    
-    if(figura){
-      setEmoji(figura.emoji)
-    }
-  }
-  if(emoji){
-    // console.log(emoji)
-   // setMensagem(mensagem + emoji)
-  }
-  const dispath = useDispatch()
-  const mensagemReducer = useSelector(state=>state.mensagem.mensagem)
+  const [mensagem,setMensagem] = React.useState('')
+
+  let figuraEmoji = useSelector(state=>state.emoji.figura)
+  useEffect(()=>{
+    setMensagem(e=> e + figuraEmoji)
+  },[figuraEmoji])
   const enviarMensagem = ()=>{
-    let dados = {mensagem,usuario:"Fabio",horaDaMensagem:"13:50"}
-    let aux = []
-    aux = [...mensagemReducer,dados]
-    console.log(aux)
-    dispath({
-      type:"mensagem",
-      payload:{mensagem:aux}
-    })
-    setMensagem('')
+     if(mensagem){
+      Api.enviarMensagens( localStorage.getItem("idDoUsuarioLogado"),  localStorage.getItem("idDoReceptor"), mensagem)
+      window.location.reload()
+     }
+  }
+  const handleKeyPress = (e)=>{
+      if(e.charCode === 13){
+        enviarMensagem()
+      }
   }
   return (
     <div className='SearchMenssagem'>
-      <div
-      component="form"
-      style={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: '95%',height:"48px",margin:"auto",border:"none" }}
-    >
-      <IconButton sx={{ p: '10px' }} aria-label="menu">
-        <AttachFileRoundedIcon />
-      </IconButton>
-      <InputBase
-        sx={{ ml: 1, flex: 1 }}
-        placeholder="envie sua mensagem"
-        inputProps={{ 'aria-label': 'envie sua mensagem' }}
-        value={mensagem}
-        onChange={e=>setMensagem(e.target.value)}
-      />
-      <IconButton type="submit" sx={{ p: '10px' }} aria-label="search">
-      {emojiVisible ? <div className='emoji'><Emoji getEmoji={GetEmoji}/></div> : <div></div>}
-        <div onClick={mostrarEmoji} style={{cursor:"pointer"}}><EmojiEmotionsOutlined/></div>
-      </IconButton>
-      <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
-      <IconButton color="primary" sx={{ p: '10px' }} aria-label="directions" onClick={enviarMensagem}>
-        <NearMeOutlinedIcon />
-      </IconButton>
+        <div
+            component="form"
+            style={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: '95%',height:"48px",margin:"auto",border:"none" }}
+          >
+            <IconButton sx={{ p: '10px' }} aria-label="menu">
+              <AttachFileRoundedIcon />
+            </IconButton>
+            <InputBase
+              sx={{ ml: 1, flex: 1 }}
+              placeholder="envie sua mensagem"
+              inputProps={{ 'aria-label': 'envie sua mensagem' }}
+              value={mensagem}
+              onChange={e=>setMensagem(e.target.value)}
+              
+              onKeyPress={e=>handleKeyPress(e)}
+            />
+            
+            <IconButton color="primary" sx={{ p: '0px', m:"10px" }} aria-label="directions"  >
+                <BasicPopover/>
+            </IconButton>
+            
+            <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
+            <IconButton color="primary" sx={{ p: '10px' }} aria-label="directions" onClick={enviarMensagem} onKeyUp={handleKeyPress}>
+              <NearMeOutlinedIcon />
+            </IconButton>
+           
+      </div>
     </div>
-    </div>
-    // <input className='SearchMenssagem' type={'text'}/>
   );
 }

@@ -10,7 +10,7 @@ import NotificationsNoneOutlinedIcon from '@mui/icons-material/NotificationsNone
 import AutoAwesomeMosaicOutlinedIcon from '@mui/icons-material/AutoAwesomeMosaicOutlined';
 import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
-export default function ColorToggleButton() {
+export default function ColorToggleButton({orientacao}) {
   const [alignment, setAlignment] = React.useState('web');
   const h = useHistory()
   const handleChange = (event, newAlignment) => {
@@ -24,8 +24,8 @@ export default function ColorToggleButton() {
       value={alignment}
       exclusive
       onChange={handleChange}
-      orientation="vertical"
-      sx={{border: " ", background: ""}}
+      orientation={orientacao}
+      sx={{margin: "auto ", flexWrap: "wrap"}}
     >
       <ToggleButton 
           onClick={()=>{h.push('/create')}}
@@ -34,7 +34,7 @@ export default function ColorToggleButton() {
           <EditOutlinedIcon/>
       </ToggleButton>
       <ToggleButton 
-          onClick={()=>h.push('/')}
+          onClick={()=>{h.push('/')}}
           sx={{border: "1px solid white ", width: "50px", margin: "30px 10px"}}
           value="android">
             

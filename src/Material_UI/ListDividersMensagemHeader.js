@@ -11,7 +11,7 @@ import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
 import AvatarGroup from '@mui/material/AvatarGroup';
 import corAleatoria from '../funcoesUteis';
-
+import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import { Divider } from '@mui/material';
 import Api from '../Api';
 
@@ -29,14 +29,17 @@ export default function ListDividersMensagemHeader() {
     getUsuario()
   },[idDoUsuarioLogado])
  
-  console.log(receptor)
+  const voltar = ()=>{
+    document.getElementById('col2').classList.remove("colunaVisivel")
+    document.getElementById('col3').classList.add("colunaInvisivel")
+  }
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static" sx={{background:'white', color:"black", width:"100%", boxShadow:"0px 0px 0px"}}>
         <Toolbar>
-         
-        
             <ListItem>
+                
+                <div className='ArrowBackIosNewIcon'><ArrowBackIosNewIcon onClick={voltar} /></div>
                 <ListItemAvatar>
                 <Avatar alt={usuario.nome} src="/static/images/avatar/5.jpg" component="span" 
                               style={{background:corAleatoria()}}

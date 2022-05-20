@@ -21,15 +21,21 @@ export default function FolderList() {
   const [receptores,setReceptores] = useState([])
   const dispath = useDispatch()
   const getIdReceptor =async (id)=>{
+    
     localStorage.setItem("idDoReceptor",id)
     const mensagens =await Api.listarMensagens(idDoUsuarioLogado,localStorage.getItem("idDoReceptor"))
     dispath({
       type:"mensagensApi",
       payload:{mensagens}
     })
+    document.getElementById('col2').classList.add("colunaVisivel")
+    document.getElementById('col3').classList.remove("colunaInvisivel")
   }
+ 
   getIdReceptor(localStorage.getItem("idDoReceptor"))
+  
   useEffect(()=>{
+    localStorage.setItem("idDoReceptor","2")
     async function usuariosDasMensagens(){
       const listaReceptoresId = await Api.listarUsuariosDasMensagens(idDoUsuarioLogado)
       setReceptores(listaReceptoresId)

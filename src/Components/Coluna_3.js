@@ -9,8 +9,8 @@ export default function Coluna_3() {
 
   
   return (
-    <div class="col  p-3 " id='coluna_2'>
-        <div className='SearchMensagemContainer'>
+    <div class="col " id='col3'> 
+        <div className=''>
         </div>
         <div class="row">
           <div class="col-md-12" >
@@ -21,9 +21,8 @@ export default function Coluna_3() {
                  </div>
              </div>
           </div>
-          <div  
-              className='SearchMenssagem'><SearchMenssagem/>
-          </div>
+        
+          <div className='inputMensagens'><SearchMenssagem/></div>
         </div>
         
     </div>

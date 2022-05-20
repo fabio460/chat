@@ -13,8 +13,8 @@ import ListItemAvatar from '@mui/material/ListItemAvatar';
 import ListItemText from '@mui/material/ListItemText';
 import Avatar from '@mui/material/Avatar';
 
-function refreshMessages(): MessageExample[] {
-  const getRandomInt = (max: number) => Math.floor(Math.random() * Math.floor(max));
+function refreshMessages() {
+  const getRandomInt = (max) => Math.floor(Math.random() * Math.floor(max));
 
   return Array.from(new Array(50)).map(
     () => messageExamples[getRandomInt(messageExamples.length)],
@@ -23,11 +23,11 @@ function refreshMessages(): MessageExample[] {
 
 export default function FixedBottomNavigation() {
   const [value, setValue] = React.useState(0);
-  const ref = React.useRef<HTMLDivElement>(null);
+  const ref = React.useRef(null);
   const [messages, setMessages] = React.useState(() => refreshMessages());
 
   React.useEffect(() => {
-    (ref.current,  HTMLDivElement).ownerDocument.body.scrollTop = 0;
+    ref.current.ownerDocument.body.scrollTop = 0;
     setMessages(refreshMessages());
   }, [value, setMessages]);
 
@@ -61,13 +61,7 @@ export default function FixedBottomNavigation() {
   );
 }
 
-interface MessageExample {
-  primary: string;
-  secondary: string;
-  person: string;
-}
-
-const messageExamples =  MessageExample = [
+const messageExamples = [
   {
     primary: 'Brunch this week?',
     secondary: "I'll be in the neighbourhood this week. Let's grab a bite to eat",

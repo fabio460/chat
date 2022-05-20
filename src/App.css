@@ -1,5 +1,40 @@
+.navBarColuna2{
+    overflow-y: scroll;
+    height: 85vh;
+}
+.navBarColuna2Bottom{
+    display: none;
+}
+.ArrowBackIosNewIcon{
+    display: none;
+}
 @media (max-width:779px) {
-    #coluna_1,#coluna_2{
+    #col3{
+        padding: 0px;
+    }
+    #coluna_1{
         display: none;
+    }
+    .navBarColuna2{
+        height: 80vh;
+    }
+    .displayNone{
+        display: none;
+    }
+    .navBarColuna2Bottom{
+       display: flex;
+    }
+    .colunaVisivel{
+       margin-left: -100vw;
+       transition: 0.2s;
+    }
+    .colunaInvisivel{
+        display: none;
+    }
+    .ArrowBackIosNewIcon{
+        display: block;
+
+        margin-left: -30px;
+        margin-right: 10px;
     }
 }

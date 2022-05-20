@@ -12,7 +12,7 @@ import PopoverMensagensRight from '../popoverMensagensRight';
 
 export default function AbasDeMensagens() {
   // const mensagem = useSelector(state=>state.mensagem).mensagem
-  // console.log(mensagem)
+  
 
   let mensagensReducerDados = useSelector(state=>state.mensagensApi.mensagens)
   let idDoUsuarioLogado = localStorage.getItem('idDoUsuarioLogado')
@@ -22,8 +22,7 @@ export default function AbasDeMensagens() {
   receptor = receptor[0].nome
   
   let mensagensReducer = mensagensReducerDados.mensagens || []
-    
-  return (
+   return (
     <div>
      
     <List className='listAbasDeMensagem' >
@@ -34,17 +33,16 @@ export default function AbasDeMensagens() {
         let cor = "mensagemBodyEmissor"
         let display1 = "flex"
         let display2 = "none"
-        let margin1 = "0px 0px 0px 14px"
-        let margin2 = "0px 14px 0px 14px"
+        let margin1 = "0px 0px 0px 1px"
+        let margin2 = "0px 1px 0px 1px"
         if(tipo === parseInt(idDoUsuarioLogado)){
            classe = "listaDeMensagensRight"
            cor = "mensagemBodyReceptor"
-           margin1 = "0px 14px 0px 14px"
-           margin2 = "0px 0px 0px 14px"
+           margin1 = "0px 1px 0px 10px"
+           margin2 = "0px 0px 0px 1px"
            display1 = "none"
            display2 = "flex"
         }
- 
 
           return(
             <ListItem >
@@ -88,7 +86,7 @@ export default function AbasDeMensagens() {
                 </div>
             </div>
             
-          </ListItem>
+          </ListItem> 
           )
       
       }

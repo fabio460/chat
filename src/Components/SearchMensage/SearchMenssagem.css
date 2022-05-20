@@ -1,20 +1,15 @@
 .SearchMenssagem{
-    position: fixed;
-    bottom: 20px;
-    left: 43%;
-    right: 2%;
+    
     border-radius: 25px;
     background-color: #ddddff;
     border: none;
+    width: 95%;
     
+    margin:20px auto 0px auto;
 }
-.emoji{
-    /* padding-bottom: 200px; */
-    /* height: 700px; */
-    
+.inputMensagens{
+    border: none;
 }
-
-
 .scrollbar-dusty-grass::-webkit-scrollbar-thumb {
     border-radius: 10px;
     -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
@@ -29,7 +24,7 @@
 .example-1 {
     position: relative;
     overflow-y: scroll ;
-    height: 600px;
+    height: 500px;
     border: none;
     width: 100%;
     transform:rotateX(180deg);
@@ -44,4 +39,21 @@
     -webkit-transform:rotateX(180deg); /* Safari and Chrome */
     -ms-transform:rotateX(180deg); /* IE 9+ */
     -o-transform:rotateX(180deg); /* Opera */
+    margin-top: 5px;
+    
+}
+@media (max-width:779px) {
+    .SearchMenssagem{
+        /* position: relative;
+        bottom: 20px;
+        left: 2%;
+        right: 2%;
+        border-radius: 25px;
+        background-color: #ddddff;
+        border: none; */
+        
+    }
+    .example-1{
+        height: 75vh;
+    }
 }

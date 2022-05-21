@@ -15,13 +15,12 @@ import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import { Divider } from '@mui/material';
 import Api from '../Api';
 
-export default function ListDividersMensagemHeader() {
+export default function ListDividersMensagemHeader({open_2}) {
     let mensagensReducerDados = useSelector(state=>state.mensagensApi.mensagens)
     let receptor = mensagensReducerDados.receptor || " "
-    
     if(receptor[0]){
       receptor = receptor[0].nome
-    }
+    }  
   let idDoUsuarioLogado = localStorage.getItem("idDoUsuarioLogado")
   const [usuario,setUsuario]=useState({})
   useEffect(()=>{
@@ -33,8 +32,9 @@ export default function ListDividersMensagemHeader() {
   },[idDoUsuarioLogado])
  
   const voltar = ()=>{
-    document.getElementById('col2').classList.remove("colunaVisivel")
-    document.getElementById('col3').classList.add("colunaInvisivel")
+    // document.getElementById('col2').classList.remove("colunaVisivel")
+    // document.getElementById('col3').classList.add("colunaInvisivel")
+    open_2()
   }
   return (
     <Box sx={{ flexGrow: 1 }}>

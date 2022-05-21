@@ -8,7 +8,16 @@
 .ArrowBackIosNewIcon{
     display: none;
 }
+.layoutResponsivo{
+    display: none;
+}
 @media (max-width:779px) {
+    .layoutResponsivo{
+        display: block;
+    }
+    .layoutDesktop{
+        display: none;
+    }
     #col3{
         padding: 0px;
     }

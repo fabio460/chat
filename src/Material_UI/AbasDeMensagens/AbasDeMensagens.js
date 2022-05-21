@@ -19,7 +19,11 @@ export default function AbasDeMensagens() {
   let emissor = mensagensReducerDados.emissor || " "
   emissor = emissor[0].nome
   let receptor = mensagensReducerDados.receptor || " "
-  receptor = receptor[0].nome
+  
+  if(receptor[0]){
+    receptor = receptor[0].nome
+  }
+  
   
   let mensagensReducer = mensagensReducerDados.mensagens || []
    return (
@@ -52,9 +56,7 @@ export default function AbasDeMensagens() {
                         <Avatar alt={emissor.toUpperCase()} src="/static/images/avatar/5.jpg" component="span" 
                               style={{background:corAleatoria(), margin:`${margin2}`, display:`${display1}`}}
                         />
-                        
                     </ListItemAvatar>
-                
                     {tipo === parseInt(idDoUsuarioLogado) ? 
                             <div style={{display:"flex",alignItems:"center",width:"100%"}}>
                                 <div style={{background:"",display:"flex",alignItems:"center",height:'60px',marginBottom:'20px'}}>

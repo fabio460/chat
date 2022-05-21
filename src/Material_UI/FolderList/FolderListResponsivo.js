@@ -12,7 +12,7 @@ import Api from '../../Api';
 import {useState} from 'react'
 import { useDispatch } from 'react-redux';
 
-export default function FolderList() {
+export default function FolderList({open_3,open_2}) {
 
   const shapeCircleStyles = { borderRadius: '50%' };
   const [idDoUsuarioLogado]= useState(1)
@@ -20,23 +20,26 @@ export default function FolderList() {
  
   const [receptores,setReceptores] = useState([])
   const dispath = useDispatch()
-  
+
+ 
+  const pegarReceptor =async (id)=>{
+    localStorage.setItem('idDoReceptor',id)
+     open_3()
+    const mensagens =await Api.listarMensagens(idDoUsuarioLogado,id)
+    dispath({
+      type:"mensagensApi",
+      payload:{mensagens}
+    })
+  }
+ 
   useEffect(()=>{
+    localStorage.setItem("idDoReceptor","0")
     async function usuariosDasMensagens(){
       const listaReceptoresId = await Api.listarUsuariosDasMensagens(idDoUsuarioLogado)
       setReceptores(listaReceptoresId)
     }
     usuariosDasMensagens();
   },[idDoUsuarioLogado])
-
-  const pegarReceptor =async (id)=>{
-    const mensagens =await Api.listarMensagens(idDoUsuarioLogado,id)
-    localStorage.setItem('idDoReceptor',id)
-    dispath({
-      type:"mensagensApi",
-      payload:{mensagens}
-    })
-  }
   return (
    <div>
     
@@ -48,7 +51,7 @@ export default function FolderList() {
               let iniciais = item.nomeDoReceptor
               
               return(
-                <ListItem className='itemList' onClick={()=>pegarReceptor(item.id)} >
+                <ListItem className='itemList' onClick={()=>pegarReceptor(item.receptor)} >
                 <ListItemAvatar>
                 <Badge color="success" overlap="circular" badgeContent=" " variant="dot">
                     <Avatar alt={iniciais.toUpperCase()} src="/static/images/avatar/5.jpg" component="span" 

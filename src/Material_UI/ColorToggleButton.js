@@ -29,13 +29,13 @@ export default function ColorToggleButton({orientacao}) {
     >
       <ToggleButton 
           onClick={()=>{h.push('/create')}}
-          sx={{border: "1px solid white ", width: "50px", margin: "30px 10px"}}
+          sx={{border: "1px solid white ", width: "50px", margin: "30px 1px"}}
           value="web">
           <EditOutlinedIcon/>
       </ToggleButton>
       <ToggleButton 
           onClick={()=>{h.push('/')}}
-          sx={{border: "1px solid white ", width: "50px", margin: "30px 10px"}}
+          sx={{border: "1px solid white ", width: "50px", margin: "30px 1px"}}
           value="android">
             
       <IconButton
@@ -49,28 +49,28 @@ export default function ColorToggleButton({orientacao}) {
             </IconButton>
       </ToggleButton>
       <ToggleButton 
-          sx={{border: "1px solid white ", width: "50px", margin: "30px 10px"}}
+          sx={{border: "1px solid white ", width: "50px", margin: "30px 1px"}}
           value="ios">
           <PeopleAltOutlinedIcon
           onClick={()=>h.push('/frends')}
       />
       </ToggleButton>
       <ToggleButton 
-         sx={{border: "1px solid white ",width: "50px", margin: "30px 10px"}}
+         sx={{border: "1px solid white ",width: "50px", margin: "30px 1px"}}
          value="web2"
          onClick={()=>h.push('/notifications')}
       >
         <NotificationsNoneOutlinedIcon/>
       </ToggleButton>
       <ToggleButton 
-          sx={{border: "1px solid white ",width: "50px", margin: "30px 10px"}}
+          sx={{border: "1px solid white ",width: "50px", margin: "30px 1px"}}
           value="android2"
           onClick={()=>h.push('/support')}
       >
         <AutoAwesomeMosaicOutlinedIcon/>
       </ToggleButton>
       <ToggleButton
-          sx={{border: "1px solid white ", width: "50px", margin: "30px 10px"}}
+          sx={{border: "1px solid white ", width: "50px", margin: "30px 1px"}}
           value="ios2"
           onClick={()=>h.push('/setting')}
       >

@@ -12,5 +12,6 @@ export  function dataToHoras(data){
 export function horaTratada(data){
     let d = data.split("T")
     let t = d[1].split(":")
-    return <div>{t[0]}:{t[1]}</div>
+    let h = parseInt(t[0]) -3
+    return <div>{h}:{t[1]}</div>
   }

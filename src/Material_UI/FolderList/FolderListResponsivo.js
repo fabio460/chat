@@ -43,7 +43,7 @@ export default function FolderList({open_3,open_2}) {
   return (
    <div>
     
-      <List sx={{ width: '93%', bgcolor: 'light', margin:"auto" }}>
+      <List sx={{ width: '93%', bgcolor: 'light', margin:"auto",height:'300px',background:'' }}>
             <AvatarGroup/>      
             {receptores.map((item)=>{
               let horaTratada = dataToHoras(item.hora)

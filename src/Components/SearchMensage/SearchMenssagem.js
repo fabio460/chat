@@ -11,20 +11,38 @@ import BasicPopover from '../../Material_UI/BasicPopover';
 
 export default function SearchMenssagem() {
   const [mensagem,setMensagem] = React.useState('')
-
   let figuraEmoji = useSelector(state=>state.emoji.figura)
   useEffect(()=>{
     setMensagem(e=> e + figuraEmoji)
+    
   },[figuraEmoji])
+  const idDoUsuarioLogado = useSelector(state=>state.idEmissor.id)
+
+  const gerReceptorReducer = useSelector(state=>state.funcao.funcao)
+    console.log(localStorage.getItem("idDoReceptor"))
   const enviarMensagem = ()=>{
-     if(mensagem){
-      Api.enviarMensagens( localStorage.getItem("idDoUsuarioLogado"),  localStorage.getItem("idDoReceptor"), mensagem)
-      window.location.reload()
+    
+     if(mensagem !==" "){
+      Api.enviarMensagens( idDoUsuarioLogado,  localStorage.getItem("idDoReceptor"), mensagem)
+     // window.location.reload()
+     setMensagem(" ")
+     
+     
      }
+     else{
+       alert('insira uma mensagem')
+     }
+     setTimeout(() => {
+      gerReceptorReducer(localStorage.getItem("idDoReceptor"))
+     }, 300);
   }
+  
   const handleKeyPress = (e)=>{
       if(e.charCode === 13){
         enviarMensagem()
+        setTimeout(() => {
+          gerReceptorReducer(localStorage.getItem("idDoReceptor"))
+         }, 300);
       }
   }
   return (

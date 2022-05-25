@@ -1,5 +1,5 @@
 import './App.css';
-
+import Bloco_2 from './Bloco_2'
 import {BrowserRouter} from 'react-router-dom'
 import Coluna3 from './Components/Coluna_3';
 import Coluna2 from './Components/Coluna_2';
@@ -25,6 +25,7 @@ function App() {
       <div className='layoutResponsivo'>
         <Responsivo/>
       </div>
+      {/* <Bloco_2/> */}
     </div>
   );
 }

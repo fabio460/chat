@@ -34,8 +34,10 @@ export default function BasicPopover() {
             vertical: 'bottom',
             horizontal: 'right',
           }}
+        onClick={()=>handleClose()}  
       >
         <Typography sx={{ p: 0 }}><Emoji/></Typography>
+        
       </Popover>
     </div>
   );

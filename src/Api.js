@@ -24,6 +24,10 @@ const Api = {
       .then(res=>res.json())
       return usuarios
     },
+     listarMensagens2:()=>{
+       
+     }
+    ,
     listarUsuariosPorId:async (id)=>{
       const formdata = new FormData()
       formdata.append("id",id)

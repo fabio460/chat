@@ -35,6 +35,7 @@ export default function PopoverMensagensRight({idDaMensagem}) {
             vertical: 'center',
             horizontal: 'right',
         }}
+        onClick={()=>handleClose()}  
       >
         <Typography sx={{ p: 2 }}>{idDaMensagem}<ListDividers idDaMensagem={idDaMensagem}/></Typography>
       </Popover>

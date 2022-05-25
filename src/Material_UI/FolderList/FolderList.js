@@ -14,10 +14,11 @@ import { useDispatch } from 'react-redux';
 
 export default function FolderList() {
 
+  const [idDoUsuarioLogado]= useState(3)
+
+
   const shapeCircleStyles = { borderRadius: '50%' };
-  const [idDoUsuarioLogado]= useState(1)
-  localStorage.setItem('idDoUsuarioLogado',idDoUsuarioLogado)
- 
+  
   const [receptores,setReceptores] = useState([])
   const dispath = useDispatch()
   
@@ -26,6 +27,11 @@ export default function FolderList() {
       const listaReceptoresId = await Api.listarUsuariosDasMensagens(idDoUsuarioLogado)
       setReceptores(listaReceptoresId)
     }
+    localStorage.setItem('idDoUsuarioLogado',idDoUsuarioLogado)
+    dispath({
+      type:'usuarioLogado',
+      payload:{id:idDoUsuarioLogado}
+    })
     usuariosDasMensagens();
   },[idDoUsuarioLogado])
 
@@ -37,6 +43,10 @@ export default function FolderList() {
       payload:{mensagens}
     })
   }
+  dispath({
+    type:'receptor',
+    payload:{funcao:pegarReceptor}
+  })
   return (
    <div>
     

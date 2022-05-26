@@ -10,7 +10,7 @@ import './SearchMensage/SearchMenssagem.css'
 export default function Coluna_3() {
   let mensagensReducerDados = useSelector(state=>state.mensagensApi.mensagens)
 useEffect(()=>{
-   console.log(mensagensReducerDados.mensagens)
+  //  console.log(mensagensReducerDados.mensagens)
 },[mensagensReducerDados])
   
   return (

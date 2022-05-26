@@ -25,7 +25,7 @@ export default function ListDividers({id}) {
   return (
     <List sx={style} component="nav" aria-label="mailbox folders">
       <ListItem button>
-        <ListItemText primary="Editar" />
+        <ListItemText primary="Editar" />{id}
         <ModeEditIcon/>
       </ListItem>
       

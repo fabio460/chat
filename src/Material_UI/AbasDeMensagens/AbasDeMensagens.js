@@ -15,7 +15,7 @@ export default function AbasDeMensagens({getIdRecebidor}) {
   const gerReceptorReducer = useSelector(state=>state.funcao.funcao)
   // setInterval(() => {
   //   gerReceptorReducer(localStorage.getItem("idDoReceptor"))
-  //  }, 5500);
+  //  }, 8000);
   let mensagensReducerDados = useSelector(state=>state.mensagensApi).mensagens
 
   const idDoUsuarioLogado = useSelector(state=>state.idEmissor.id)

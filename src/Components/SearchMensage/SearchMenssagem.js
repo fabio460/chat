@@ -19,7 +19,7 @@ export default function SearchMenssagem() {
   const idDoUsuarioLogado = useSelector(state=>state.idEmissor.id)
 
   const gerReceptorReducer = useSelector(state=>state.funcao.funcao)
-    console.log(localStorage.getItem("idDoReceptor"))
+    // console.log(localStorage.getItem("idDoReceptor"))
   const enviarMensagem = ()=>{
     
      if(mensagem !==" "){

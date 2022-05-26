@@ -11,17 +11,27 @@ import corAleatoria, { dataToHoras } from '../../funcoesUteis'
 import Api from '../../Api';
 import {useState} from 'react'
 import { useDispatch } from 'react-redux';
-
+import '../../App.css'
 export default function FolderList() {
 
   const [idDoUsuarioLogado]= useState(3)
-
-
   const shapeCircleStyles = { borderRadius: '50%' };
-  
   const [receptores,setReceptores] = useState([])
   const dispath = useDispatch()
-  
+  const pegarReceptor =async (id)=>{
+    const mensagens =await Api.listarMensagens(idDoUsuarioLogado,id)
+    localStorage.setItem('idDoReceptor',id)
+    dispath({
+      type:"mensagensApi",
+      payload:{mensagens}
+    })
+  }
+
+  dispath({
+    type:'receptor',
+    payload:{funcao:pegarReceptor}
+  })
+
   useEffect(()=>{
     async function usuariosDasMensagens(){
       const listaReceptoresId = await Api.listarUsuariosDasMensagens(idDoUsuarioLogado)
@@ -35,20 +45,10 @@ export default function FolderList() {
     usuariosDasMensagens();
   },[idDoUsuarioLogado])
 
-  const pegarReceptor =async (id)=>{
-    const mensagens =await Api.listarMensagens(idDoUsuarioLogado,id)
-    localStorage.setItem('idDoReceptor',id)
-    dispath({
-      type:"mensagensApi",
-      payload:{mensagens}
-    })
-  }
-  dispath({
-    type:'receptor',
-    payload:{funcao:pegarReceptor}
-  })
+
+
   return (
-   <div>
+   <div className='navBarColuna2   scrollbar-dusty-grass thin'>
     
       <List sx={{ width: '93%', bgcolor: 'light', margin:"auto" }}>
             <AvatarGroup/>      

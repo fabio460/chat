@@ -8,12 +8,12 @@ import FolderList from '../Material_UI/FolderList/FolderListResponsivo';
 export default function Coluna_2({open_3,open_2}) {
   return (
       <div class="col bg-light p-2 col-md-4" id='col2'>
-         <div className='navBarColuna2   scrollbar-dusty-grass thin'>
+         <div >
          <Switch>
             <Route exact path={'/'}>
                   <h2 style={{marginBottom:"50px"}}>Chats</h2>
                   <Search/>
-                  <FolderList open_3={open_3} open_2={open_2}/>
+                  <div > <FolderList open_3={open_3} open_2={open_2}/></div>
             </Route>
               <Route path='/create'>
                 <h2>Create chat</h2>

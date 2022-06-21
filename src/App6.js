@@ -133,6 +133,21 @@ const enviarMensagem =async (e)=>{
       setMensagem("")
    }
 }
+const enviarMensagemBtn = ()=>{
+  if (mensagem !== "" & receptorId !== "") {
+        
+    addDoc(collection(db, "chats"), {
+      sala,
+      usuarioLogado:user.displayName,
+      mensagem,
+      photoURL:user.photoURL,
+      data:new Date(),
+      time:new Date().getTime()
+    });
+
+  }
+  setMensagem("")
+}
 
 
 function gerarSala(a,b) {
@@ -211,6 +226,7 @@ const getReceptor = async(e)=>{
                     onChange={e=>setMensagem(e.target.value)}  
                     value={mensagem}
                   />
+                  <button onClick={enviarMensagemBtn}>enviar</button>
               </div>
             </div>  
             </div>       

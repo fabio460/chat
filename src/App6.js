@@ -116,17 +116,34 @@ const [receptorId]=useState()
 
 
 
+
+const [ultimaMensagem,setUltimaMensagem]=useState(1)
+
 const enviarMensagem =async (e)=>{
+
    if (e.code === 'Enter') {
       if (mensagem !== "" & receptorId !== "") {
         
+        const mensagemRef = query(collection(db,"chats"),orderBy("uid"))
+        let aux =[]
+        onSnapshot(mensagemRef,(snapshot)=>{
+         snapshot.docs.forEach(doc=>{
+           aux.push(doc.data())
+         })
+         let defined = aux[aux.length-1]
+         //console.log(defined)
+         if (defined !== undefined) {
+           setUltimaMensagem(defined.uid + 1)
+         }
+        })
+        //console.log(ultimaMensagem)
         addDoc(collection(db, "chats"), {
           sala,
           usuarioLogado:user.displayName,
           mensagem,
           photoURL:user.photoURL,
           data:new Date(),
-          time:new Date().getTime()
+          uid:ultimaMensagem
         });
 
       }
@@ -165,13 +182,24 @@ function gerarSala(a,b) {
 const getReceptor = async(e)=>{
   
   setSala(gerarSala( e.target.id , idLogado))
-   let mensagemRef = query(collection(db,"chats"),where("sala","==",gerarSala( e.target.id , idLogado)))
+   let mensagemRef = query(    
+      collection(db,"chats"),
+      where( 
+        "sala" ,
+         "==" ,
+          gerarSala( e.target.id , idLogado)
+      ),
+      orderBy("uid")
+    )
    onSnapshot(mensagemRef,(snapshot)=>{
      let array = []
-     snapshot.docs.forEach(doc=>{     
+     snapshot.docs.forEach((doc,key)=>{     
        array.push(doc.data())
+       console.log(doc.data().uid)
      })
+    // console.log(array)
      setMensagens(array)
+     
    })
 }
 
@@ -199,13 +227,15 @@ const getReceptor = async(e)=>{
             <div className='sidebar'>
               
                 {usuarios.map(item=>{
+                 if (item.nome !== user.displayName) {
                   return<div>
-                    <div id={item.uid} value='valus' className=' usuarioItens' onClick={getReceptor} >
-                      <img id={item.uid} src={item.avatar} alt='' className='avatarHeader'/>
-                      <div id={item.uid} className='headerUsuarioTitle' >{item.nome}</div>
-                      
-                    </div>
+                  <div id={item.uid} value='valus' className=' usuarioItens' onClick={getReceptor} >
+                    <img id={item.uid} src={item.avatar} alt='' className='avatarHeader'/>
+                    <div id={item.uid} className='headerUsuarioTitle' >{item.nome}</div>
+                    
                   </div>
+                </div>
+                 }
                 })}
             </div>
             <div className='mensagens'>

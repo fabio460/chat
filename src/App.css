@@ -73,6 +73,27 @@ header{
 .mensagemBody{
     display: flex;
 }
+.loginContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.mensagens{
+    background-color: rgb(244, 255, 255);
+    height: 400px;
+    overflow-y: scroll;
+    transform: rotateX(180deg);
+}
+.mensagens::-webkit-scrollbar{
+    width: 6px;
+}
+.mensagens::-webkit-scrollbar-thumb{
+    background-color: aquamarine;
+}
+.mensagemBodyContainer{
+    transform: rotateX(180deg);
+}
 @media (max-width:779px) {
     .loginContainer{
        

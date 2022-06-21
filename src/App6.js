@@ -238,9 +238,9 @@ const getReceptor = async(e)=>{
                  }
                 })}
             </div>
-            <div className='mensagens'>
-              <div>
-                  <div>
+            <div >
+              <div className='mensagens'>
+                  <div className='mensagemBodyContainer'>
                     {mensagens.map(item=>{
                       return <div className='mensagemBody'
                          style={{justifyContent:item.usuarioLogado === user.displayName ?'':'flex-end'}}
@@ -251,7 +251,10 @@ const getReceptor = async(e)=>{
                       </div>
                     })}
                   </div>
-                  <input 
+ 
+              </div>
+              <div className='searchContainet'>
+                <input 
                     onKeyUp={enviarMensagem}
                     onChange={e=>setMensagem(e.target.value)}  
                     value={mensagem}
@@ -259,6 +262,7 @@ const getReceptor = async(e)=>{
                   <button onClick={enviarMensagemBtn}>enviar</button>
               </div>
             </div>  
+    
             </div>       
 
 
@@ -266,7 +270,7 @@ const getReceptor = async(e)=>{
 
         </div>
         :
-        <div><button onClick={logar}>Logar com Google</button></div>  
+        <div className='loginContainer'><button onClick={logar}>Logar com Google</button></div>  
       }</div>
 
         

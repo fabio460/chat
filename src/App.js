@@ -7,29 +7,34 @@ import Coluna1 from './Components/Coluna_1';
 import PersistentDrawerLeft from './Material_UI/PersistentDrawerLeft';
 import Login from '../src/Material_UI/Login';
 import Responsivo from './Components/Responsivo';
+import Home from './Components/Home';
+import { Switch } from 'react-router-dom/cjs/react-router-dom.min';
 function App() {
   return (
     <div>
       <div className='layoutDesktop'>
        <BrowserRouter>    
+         <Switch>
           <Route exact path={'/'}>
               <Login/>
           </Route>
-          <Route path={'/home'}>
-          <div className="App">
-                <div class=" p-1 m-2">
-                    <div class="row">
-                      <Coluna1/>
-                      <Coluna2/>
-                      <Coluna3/>
-                  </div>
-            </div>
-          </div>  
+          <Route path={'/'}>
+             <Home/>
           </Route>
+         </Switch>
       </BrowserRouter> 
       </div>
       <div className='layoutResponsivo'>
-        <Responsivo/>
+        <BrowserRouter>
+           <Switch>
+              <Route exact path={'/'}>
+                <Login/>
+              </Route>
+              <Route path={'/'}>
+                  <Responsivo/>
+              </Route>
+           </Switch>
+        </BrowserRouter>
       </div>
       {/* <Bloco_2/> */}
     </div>

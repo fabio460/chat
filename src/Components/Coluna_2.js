@@ -1,5 +1,6 @@
 import React from 'react'
 import { Route, Switch} from 'react-router-dom'
+import { BrowserRouter } from 'react-router-dom/cjs/react-router-dom.min';
 import Search from '../Components/Search/Search';
 import ColorToggleButton from '../Material_UI/ColorToggleButton';
 // import FixedBottomNavigation from '../Material_UI/FixedBottomNavigation';
@@ -11,8 +12,7 @@ export default function Coluna_2() {
       <div class="col bg-light p-2 col-md-4" id='col2'>
          
          <Switch>
-  
-            <Route path={'/'}>
+            <Route path={'/chat'}>
                   <h2 style={{marginBottom:"50px"}}>Chats</h2>
                   <Search/>
                   <div > <FolderList/></div>
@@ -33,6 +33,7 @@ export default function Coluna_2() {
                 <h2>Configurações</h2>
               </Route>
         </Switch>
+      
          
         <div className='navBarColuna2Bottom'>
             <ColorToggleButton orientacao="horizontal"/>

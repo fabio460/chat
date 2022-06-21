@@ -34,7 +34,7 @@ export default function ColorToggleButton({orientacao}) {
           <EditOutlinedIcon/>
       </ToggleButton>
       <ToggleButton 
-          onClick={()=>{h.push('/')}}
+          onClick={()=>{h.push('/chat')}}
           sx={{border: "1px solid white ", width: "50px", margin: "30px 1px"}}
           value="android">
             

@@ -9,6 +9,7 @@ import listaUsuarioReducer from './listaUsuarioReducer'
 import gerReceptorReducer from './getReceptorReducer'
 import idRecebidorReducer from './idRecebidorReducer'
 import getEmissorLogado from './getEmissorLogado'
+import dadosSocketReducer from './dadosSocketIoReducer'
 export default  combineReducers({
     item:itemReducer,
     usuario:usuarioReducer,
@@ -19,5 +20,6 @@ export default  combineReducers({
     lista:listaUsuarioReducer,
     funcao:gerReceptorReducer,
     idRecebidor:idRecebidorReducer,
-    idEmissor:getEmissorLogado
+    idEmissor:getEmissorLogado,
+    socketReducer:dadosSocketReducer
 })

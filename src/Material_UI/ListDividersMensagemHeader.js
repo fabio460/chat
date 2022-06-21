@@ -22,9 +22,9 @@ export default function ListDividersMensagemHeader() {
     if(receptor[0]){
       receptor = receptor[0].nome
     }
-  let idDoUsuarioLogado2 = localStorage.getItem("idDoUsuarioLogado")
+  let idDoUsuarioLogado = localStorage.getItem("usuarioLogado")
   const [usuario,setUsuario]=useState({})
-  const idDoUsuarioLogado = useSelector(state=>state.idEmissor.id)
+  const idDoUsuarioLogado2 = useSelector(state=>state.idEmissor.id)
   useEffect(()=>{
      async function getUsuario(){
         let usuario =await Api.listarUsuariosPorId(idDoUsuarioLogado)

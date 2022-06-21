@@ -10,25 +10,27 @@ export default function Coluna_2({open_3,open_2}) {
       <div class="col bg-light p-2 col-md-4" id='col2'>
          <div >
          <Switch>
-            <Route exact path={'/'}>
-                  <h2 style={{marginBottom:"50px"}}>Chats</h2>
-                  <Search/>
-                  <div > <FolderList open_3={open_3} open_2={open_2}/></div>
+            <Route exact path={'/chat'}>
+                <div style={{height:'563px'}}>
+                    <h2 style={{marginBottom:"50px"}}>Chats</h2>
+                    <Search/>
+                    <div> <FolderList open_3={open_3} open_2={open_2}/></div>
+                </div>
             </Route>
               <Route path='/create'>
-                <h2>Create chat</h2>
+                <div style={{height:'563px'}}>Create chat</div>
               </Route>
               <Route path='/frends'>
-                <h2>Amigos</h2>
+                <div style={{height:'563px'}}>frends</div>
               </Route>
               <Route path='/notifications'>
-                <h2>Notificações</h2>
+                <div style={{height:'563px'}}>notifications</div>
               </Route>
               <Route path='/support'>
-                <h2>Suporte</h2>
-              </Route>
+              <div style={{height:'563px'}}>support</div>
+                </Route>
               <Route path='/setting'>
-                <h2>Configurações</h2>
+                <div style={{height:'563px'}}>setting</div>
               </Route>
         </Switch>
          </div>

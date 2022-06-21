@@ -23,7 +23,6 @@ useEffect(()=>{
              <div class="card example-1 square scrollbar-dusty-grass square thin" id="messages">
                  <div className='sub'>
                     <AbasDeMensagens />
-                    {/* <AbaDeMensagens2/> */}
                  </div>
              </div>
           </div>

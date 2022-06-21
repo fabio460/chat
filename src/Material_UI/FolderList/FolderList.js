@@ -14,7 +14,7 @@ import { useDispatch } from 'react-redux';
 import '../../App.css'
 export default function FolderList() {
 
-  const [idDoUsuarioLogado]= useState(3)
+  const [idDoUsuarioLogado]= useState(localStorage.getItem('usuarioLogado'))
   const shapeCircleStyles = { borderRadius: '50%' };
   const [receptores,setReceptores] = useState([])
   const dispath = useDispatch()

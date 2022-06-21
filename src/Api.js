@@ -3,6 +3,7 @@ const usuariosList = 'listarUsuarios'
 const mensagens = 'listarMensagem'
 const inserirMensagens = "inserirMensagem"
 const deletarMensagem = "deletarMensagem"
+const jwt = "jwt"
 const Api = {
     listarUsuariosDasMensagens: (id_Receptor)=>{
         const formdata = new FormData()
@@ -58,6 +59,17 @@ const Api = {
          body:formdata
        }).then(res=>res.json()).catch(res=>console.log(res))
        return usuario
+    },
+    jwt: (email,senha)=>{
+      const formdata = new FormData()
+      formdata.append('email',email)
+      formdata.append('senha',senha)
+      const usuarios = fetch(link + jwt,{
+        method:"POST",
+        body:formdata
+      })
+      .then(res=>res.json())
+      return usuarios
     }
 }
 export default Api

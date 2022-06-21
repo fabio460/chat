@@ -1,0 +1,23 @@
+.App4{
+    background-color: rgb(46, 45, 45);
+    color: white;
+    min-height: 100vh;
+}
+.loginContainer,.homeContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.loginBody,.homeBody{
+    background-color: beige;
+    border-radius: 10px;
+    padding: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.homeBody{
+    color: black;
+}

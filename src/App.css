@@ -84,6 +84,14 @@ header{
     height: 400px;
     overflow-y: scroll;
     transform: rotateX(180deg);
+    padding: 10px;
+    
+}
+.mensageBodySemMensagem{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: large;
 }
 .mensagens::-webkit-scrollbar{
     width: 6px;

@@ -8,10 +8,10 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { getAuth, signInWithPopup, GoogleAuthProvider, signOut,  } from "firebase/auth";
 
 export default function App6() {
-     const auth = getAuth();  
+    const auth = getAuth();  
     const [usuarios,setUsuarios] = useState([])
     const [usuarioLogado,setUsuarioLogado]=useState([])
-    
+    const [visivel,setVisivel]=useState(true)
     const [user] = useAuthState(auth);
    
     const [sala,setSala]= useState()
@@ -193,7 +193,7 @@ function gerarSala(a,b) {
 }
 
 const getReceptor = async(e)=>{
-  
+  setVisivel(false)
   setSala(gerarSala( e.target.id , idLogado))
    let mensagemRef = query(    
       collection(db,"chats"),
@@ -251,30 +251,35 @@ const getReceptor = async(e)=>{
                  }
                 })}
             </div>
-            <div >
-              <div className='mensagens'>
-                  <div className='mensagemBodyContainer'>
-                    {mensagens.map(item=>{
-                      return <div className='mensagemBody'
-                         style={{justifyContent:item.usuarioLogado === user.displayName ?'':'flex-end'}}
-                      >
-                        <div 
-                          className={item.usuarioLogado === user.displayName ?'mensagemUsuario':'mensagemReceptor'}
-                        >{item.mensagem}</div>
-                      </div>
-                    })}
-                  </div>
- 
-              </div>
-              <div className='searchContainet'>
-                <input 
-                    onKeyUp={enviarMensagem}
-                    onChange={e=>setMensagem(e.target.value)}  
-                    value={mensagem}
-                  />
-                  <button onClick={enviarMensagemBtn}>enviar</button>
-              </div>
-            </div>  
+            {visivel?
+              <div className='mensageBodySemMensagem'>Selecione um usuario !</div>
+            :
+              <div>
+                <div className='homeMessagem'>
+                    <div className='mensagens'>
+                        <div className='mensagemBodyContainer'>
+                          {mensagens.map(item=>{
+                            return <div className='mensagemBody'
+                              style={{justifyContent:item.usuarioLogado === user.displayName ?'':'flex-end'}}
+                            >
+                              <div 
+                                className={item.usuarioLogado === user.displayName ?'mensagemUsuario':'mensagemReceptor'}
+                              >{item.mensagem}</div>
+                            </div>
+                          })}
+                        </div>
+      
+                    </div>
+                    <div className='searchContainet'>
+                      <input 
+                          onKeyUp={enviarMensagem}
+                          onChange={e=>setMensagem(e.target.value)}  
+                          value={mensagem}
+                        />
+                        <button onClick={enviarMensagemBtn}>enviar</button>
+                    </div>
+                </div>  
+              </div>}
     
             </div>       
 

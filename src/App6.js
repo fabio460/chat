@@ -153,13 +153,26 @@ const enviarMensagem =async (e)=>{
 const enviarMensagemBtn = ()=>{
   if (mensagem !== "" & receptorId !== "") {
         
+    const mensagemRef = query(collection(db,"chats"),orderBy("uid"))
+    let aux =[]
+    onSnapshot(mensagemRef,(snapshot)=>{
+     snapshot.docs.forEach(doc=>{
+       aux.push(doc.data())
+     })
+     let defined = aux[aux.length-1]
+     //console.log(defined)
+     if (defined !== undefined) {
+       setUltimaMensagem(defined.uid + 1)
+     }
+    })
+    //console.log(ultimaMensagem)
     addDoc(collection(db, "chats"), {
       sala,
       usuarioLogado:user.displayName,
       mensagem,
       photoURL:user.photoURL,
       data:new Date(),
-      time:new Date().getTime()
+      uid:ultimaMensagem
     });
 
   }

@@ -163,7 +163,7 @@ const getReceptor = async(e)=>{
   
   return (   
     <div>
-        <div>{usuarioLogado.length !== 0
+        <div>{usuarioLogado.length
         ?
         <div>
            
